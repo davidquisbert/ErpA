@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERPBDModelTodo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nit" Type="Int32" />
+    <Property Name="Sigla" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="Int32" />
+    <Property Name="Correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Niveles" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__empresa__IdUsuar__267ABA7A" FromRole="Empresa" ToRole="Usuario" />
+    <NavigationProperty Name="Gestion" Relationship="Self.FK__gestion__IdEmpre__2A4B4B5E" FromRole="Empresa" ToRole="Gestion" />
+  </EntityType>
+  <EntityType Name="Gestion">
+    <Key>
+      <PropertyRef Name="IdGestion" />
+    </Key>
+    <Property Name="IdGestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fechainicio" Type="DateTime" Precision="3" />
+    <Property Name="Fechafin" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__gestion__IdEmpre__2A4B4B5E" FromRole="Gestion" ToRole="Empresa" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__gestion__IdUsuar__29572725" FromRole="Gestion" ToRole="Usuario" />
+    <NavigationProperty Name="Periodo" Relationship="Self.FK__periodo__IdGesti__2E1BDC42" FromRole="Gestion" ToRole="Periodo" />
+  </EntityType>
+  <EntityType Name="Periodo">
+    <Key>
+      <PropertyRef Name="IdPeriodo" />
+    </Key>
+    <Property Name="IdPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fechainicio" Type="DateTime" Precision="0" />
+    <Property Name="Fechafin" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdGestion" Type="Int32" />
+    <NavigationProperty Name="Gestion" Relationship="Self.FK__periodo__IdGesti__2E1BDC42" FromRole="Periodo" ToRole="Gestion" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__periodo__IdUsuar__2D27B809" FromRole="Periodo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__empresa__IdUsuar__267ABA7A" FromRole="Usuario" ToRole="Empresa" />
+    <NavigationProperty Name="Gestion" Relationship="Self.FK__gestion__IdUsuar__29572725" FromRole="Usuario" ToRole="Gestion" />
+    <NavigationProperty Name="Periodo" Relationship="Self.FK__periodo__IdUsuar__2D27B809" FromRole="Usuario" ToRole="Periodo" />
+  </EntityType>
+  <Association Name="FK__empresa__IdUsuar__267ABA7A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__gestion__IdEmpre__2A4B4B5E">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Gestion">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__gestion__IdUsuar__29572725">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Gestion">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__periodo__IdGesti__2E1BDC42">
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="0..1" />
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gestion">
+        <PropertyRef Name="IdGestion" />
+      </Principal>
+      <Dependent Role="Periodo">
+        <PropertyRef Name="IdGestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__periodo__IdUsuar__2D27B809">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Periodo">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ERPBDEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+    <EntitySet Name="Gestion" EntityType="Self.Gestion" />
+    <EntitySet Name="Periodo" EntityType="Self.Periodo" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__empresa__IdUsuar__267ABA7A" Association="Self.FK__empresa__IdUsuar__267ABA7A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__gestion__IdEmpre__2A4B4B5E" Association="Self.FK__gestion__IdEmpre__2A4B4B5E">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Gestion" EntitySet="Gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__gestion__IdUsuar__29572725" Association="Self.FK__gestion__IdUsuar__29572725">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Gestion" EntitySet="Gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__periodo__IdGesti__2E1BDC42" Association="Self.FK__periodo__IdGesti__2E1BDC42">
+      <End Role="Gestion" EntitySet="Gestion" />
+      <End Role="Periodo" EntitySet="Periodo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__periodo__IdUsuar__2D27B809" Association="Self.FK__periodo__IdUsuar__2D27B809">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Periodo" EntitySet="Periodo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

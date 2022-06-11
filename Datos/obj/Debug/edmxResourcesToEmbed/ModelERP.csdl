@@ -1,0 +1,847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERPBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Articulo">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="PrecioVenta" Type="Double" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__Articulo__IdEmpr__619B8048" FromRole="Articulo" ToRole="Empresa" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Articulo__IdUsua__628FA481" FromRole="Articulo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="ArticuloCategoria">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" />
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdCategoriaPadre" Type="Int32" />
+    <NavigationProperty Name="Categoria1" Relationship="Self.FK__Categoria__IdCat__5EBF139D" FromRole="Categoria" ToRole="Categoria1" />
+    <NavigationProperty Name="Categoria2" Relationship="Self.FK__Categoria__IdCat__5EBF139D" FromRole="Categoria1" ToRole="Categoria" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__Categoria__IdEmp__5CD6CB2B" FromRole="Categoria" ToRole="Empresa" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Categoria__IdUsu__5DCAEF64" FromRole="Categoria" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Comprobante">
+    <Key>
+      <PropertyRef Name="IdComprobante" />
+    </Key>
+    <Property Name="IdComprobante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Serie" Type="Int32" />
+    <Property Name="Glosa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="TipoCambio" Type="Double" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="TipoComprobante" Type="Int32" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdMoneda" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__Comproban__IdEmp__33D4B598" FromRole="Comprobante" ToRole="Empresa" />
+    <NavigationProperty Name="Moneda" Relationship="Self.FK__Comproban__IdMon__34C8D9D1" FromRole="Comprobante" ToRole="Moneda" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Comproban__IdUsu__35BCFE0A" FromRole="Comprobante" ToRole="Usuario" />
+    <NavigationProperty Name="DetalleComprobante" Relationship="Self.FK__DetalleCo__IdCom__398D8EEE" FromRole="Comprobante" ToRole="DetalleComprobante" />
+    <NavigationProperty Name="Nota" Relationship="ERPBDModel.FK__Nota__IdComproba__693CA210" FromRole="Comprobante" ToRole="Nota" />
+  </EntityType>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nivel" Type="Int32" />
+    <Property Name="TipoDeCuenta" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="IdCuentaPadre" Type="Int32" />
+    <NavigationProperty Name="Cuenta1" Relationship="Self.FK__Cuenta__IdCuenta__36B12243" FromRole="Cuenta" ToRole="Cuenta1" />
+    <NavigationProperty Name="Cuenta2" Relationship="Self.FK__Cuenta__IdCuenta__36B12243" FromRole="Cuenta1" ToRole="Cuenta" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__Cuenta__IdEmpres__37A5467C" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Cuenta__IdUsuari__38996AB5" FromRole="Cuenta" ToRole="Usuario" />
+    <NavigationProperty Name="DetalleComprobante" Relationship="Self.FK__DetalleCo__IdCue__3A81B327" FromRole="Cuenta" ToRole="DetalleComprobante" />
+    <NavigationProperty Name="Empresa1" Relationship="ERPBDModel.FK__Empresa__IdCuent__01142BA1" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Empresa2" Relationship="ERPBDModel.FK__Empresa__IdCuent__02084FDA" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Empresa3" Relationship="ERPBDModel.FK__Empresa__IdCuent__02FC7413" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Empresa4" Relationship="ERPBDModel.FK__Empresa__IdCuent__03F0984C" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Empresa5" Relationship="ERPBDModel.FK__Empresa__IdCuent__04E4BC85" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Empresa6" Relationship="ERPBDModel.FK__Empresa__IdCuent__05D8E0BE" FromRole="Cuenta" ToRole="Empresa" />
+    <NavigationProperty Name="Empresa7" Relationship="ERPBDModel.FK__Empresa__IdCuent__06CD04F7" FromRole="Cuenta" ToRole="Empresa" />
+  </EntityType>
+  <EntityType Name="DetalleComprobante">
+    <Key>
+      <PropertyRef Name="IdDetalleComprobante" />
+    </Key>
+    <Property Name="IdDetalleComprobante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numero" Type="Int32" />
+    <Property Name="Glosa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MontoDebe" Type="Double" />
+    <Property Name="MontoHaber" Type="Double" />
+    <Property Name="MontoDebeAlt" Type="Double" />
+    <Property Name="MontoHaberAlt" Type="Double" />
+    <Property Name="IdComprobante" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdCuenta" Type="Int32" />
+    <NavigationProperty Name="Comprobante" Relationship="Self.FK__DetalleCo__IdCom__398D8EEE" FromRole="DetalleComprobante" ToRole="Comprobante" />
+    <NavigationProperty Name="Cuenta" Relationship="Self.FK__DetalleCo__IdCue__3A81B327" FromRole="DetalleComprobante" ToRole="Cuenta" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__DetalleCo__IdUsu__3B75D760" FromRole="DetalleComprobante" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Niveles" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="Articulo" Relationship="Self.FK__Articulo__IdEmpr__619B8048" FromRole="Empresa" ToRole="Articulo" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Categoria__IdEmp__5CD6CB2B" FromRole="Empresa" ToRole="Categoria" />
+    <NavigationProperty Name="Comprobante" Relationship="Self.FK__Comproban__IdEmp__33D4B598" FromRole="Empresa" ToRole="Comprobante" />
+    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__IdEmpres__37A5467C" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__empresa__IdUsuar__267ABA7A" FromRole="Empresa" ToRole="Usuario" />
+    <NavigationProperty Name="EmpresaMoneda" Relationship="Self.FK__EmpresaMo__IdEmp__3D5E1FD2" FromRole="Empresa" ToRole="EmpresaMoneda" />
+    <NavigationProperty Name="Gestion" Relationship="Self.FK__gestion__IdEmpre__2A4B4B5E" FromRole="Empresa" ToRole="Gestion" />
+    <NavigationProperty Name="Nota" Relationship="ERPBDModel.FK__Nota__IdEmpresa__6754599E" FromRole="Empresa" ToRole="Nota" />
+    <Property Name="Integracion" Type="Boolean" />
+    <Property Name="IdCuentaCaja" Type="Int32" />
+    <Property Name="IdCuentaCreditoFiscal" Type="Int32" />
+    <Property Name="IdCuentaDebitoFiscal" Type="Int32" />
+    <Property Name="IdCuentaCompras" Type="Int32" />
+    <Property Name="IdCuentaVentas" Type="Int32" />
+    <Property Name="IdCuentaIt" Type="Int32" />
+    <Property Name="IdCuentaItPorPagar" Type="Int32" />
+    <NavigationProperty Name="Cuenta1" Relationship="ERPBDModel.FK__Empresa__IdCuent__01142BA1" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta2" Relationship="ERPBDModel.FK__Empresa__IdCuent__02084FDA" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta3" Relationship="ERPBDModel.FK__Empresa__IdCuent__02FC7413" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta4" Relationship="ERPBDModel.FK__Empresa__IdCuent__03F0984C" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta5" Relationship="ERPBDModel.FK__Empresa__IdCuent__04E4BC85" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta6" Relationship="ERPBDModel.FK__Empresa__IdCuent__05D8E0BE" FromRole="Empresa" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta7" Relationship="ERPBDModel.FK__Empresa__IdCuent__06CD04F7" FromRole="Empresa" ToRole="Cuenta" />
+  </EntityType>
+  <EntityType Name="EmpresaMoneda">
+    <Key>
+      <PropertyRef Name="IdEmpresaMoneda" />
+    </Key>
+    <Property Name="IdEmpresaMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cambio" Type="Double" />
+    <Property Name="Activo" Type="Int32" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="IdMonedaPrincipal" Type="Int32" />
+    <Property Name="IdMonedaAlternativa" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__EmpresaMo__IdEmp__3D5E1FD2" FromRole="EmpresaMoneda" ToRole="Empresa" />
+    <NavigationProperty Name="Moneda" Relationship="Self.FK__EmpresaMo__IdMon__3E52440B" FromRole="EmpresaMoneda" ToRole="Moneda" />
+    <NavigationProperty Name="Moneda1" Relationship="Self.FK__EmpresaMo__IdMon__3F466844" FromRole="EmpresaMoneda" ToRole="Moneda" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__EmpresaMo__IdUsu__403A8C7D" FromRole="EmpresaMoneda" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Gestion">
+    <Key>
+      <PropertyRef Name="IdGestion" />
+    </Key>
+    <Property Name="IdGestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fechainicio" Type="DateTime" Precision="3" />
+    <Property Name="Fechafin" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__gestion__IdEmpre__2A4B4B5E" FromRole="Gestion" ToRole="Empresa" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Gestion__IdUsuar__4222D4EF" FromRole="Gestion" ToRole="Usuario" />
+    <NavigationProperty Name="Periodo" Relationship="Self.FK__Periodo__IdGesti__440B1D61" FromRole="Gestion" ToRole="Periodo" />
+  </EntityType>
+  <EntityType Name="Moneda">
+    <Key>
+      <PropertyRef Name="IdMoneda" />
+    </Key>
+    <Property Name="IdMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Abreviatura" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <NavigationProperty Name="Comprobante" Relationship="Self.FK__Comproban__IdMon__34C8D9D1" FromRole="Moneda" ToRole="Comprobante" />
+    <NavigationProperty Name="EmpresaMoneda" Relationship="Self.FK__EmpresaMo__IdMon__3E52440B" FromRole="Moneda" ToRole="EmpresaMoneda" />
+    <NavigationProperty Name="EmpresaMoneda1" Relationship="Self.FK__EmpresaMo__IdMon__3F466844" FromRole="Moneda" ToRole="EmpresaMoneda" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Moneda__IdUsuari__4316F928" FromRole="Moneda" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Periodo">
+    <Key>
+      <PropertyRef Name="IdPeriodo" />
+    </Key>
+    <Property Name="IdPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fechainicio" Type="DateTime" Precision="0" />
+    <Property Name="Fechafin" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdGestion" Type="Int32" />
+    <NavigationProperty Name="Gestion" Relationship="Self.FK__Periodo__IdGesti__440B1D61" FromRole="Periodo" ToRole="Gestion" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Periodo__IdUsuar__44FF419A" FromRole="Periodo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="Articulo" Relationship="Self.FK__Articulo__IdUsua__628FA481" FromRole="Usuario" ToRole="Articulo" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Categoria__IdUsu__5DCAEF64" FromRole="Usuario" ToRole="Categoria" />
+    <NavigationProperty Name="Comprobante" Relationship="Self.FK__Comproban__IdUsu__35BCFE0A" FromRole="Usuario" ToRole="Comprobante" />
+    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__IdUsuari__38996AB5" FromRole="Usuario" ToRole="Cuenta" />
+    <NavigationProperty Name="DetalleComprobante" Relationship="Self.FK__DetalleCo__IdUsu__3B75D760" FromRole="Usuario" ToRole="DetalleComprobante" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__empresa__IdUsuar__267ABA7A" FromRole="Usuario" ToRole="Empresa" />
+    <NavigationProperty Name="EmpresaMoneda" Relationship="Self.FK__EmpresaMo__IdUsu__403A8C7D" FromRole="Usuario" ToRole="EmpresaMoneda" />
+    <NavigationProperty Name="Gestion" Relationship="Self.FK__Gestion__IdUsuar__4222D4EF" FromRole="Usuario" ToRole="Gestion" />
+    <NavigationProperty Name="Moneda" Relationship="Self.FK__Moneda__IdUsuari__4316F928" FromRole="Usuario" ToRole="Moneda" />
+    <NavigationProperty Name="Periodo" Relationship="Self.FK__Periodo__IdUsuar__44FF419A" FromRole="Usuario" ToRole="Periodo" />
+    <NavigationProperty Name="Nota" Relationship="ERPBDModel.FK__Nota__IdUsuario__68487DD7" FromRole="Usuario" ToRole="Nota" />
+  </EntityType>
+  <Association Name="FK__Articulo__IdEmpr__619B8048">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Articulo">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Articulo__IdUsua__628FA481">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Articulo">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Categoria__IdCat__5EBF139D">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Categoria1" Type="Self.Categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Categoria1">
+        <PropertyRef Name="IdCategoriaPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Categoria__IdEmp__5CD6CB2B">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Categoria">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Categoria__IdUsu__5DCAEF64">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Categoria">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comproban__IdEmp__33D4B598">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Comprobante" Type="Self.Comprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Comprobante">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comproban__IdMon__34C8D9D1">
+    <End Role="Moneda" Type="Self.Moneda" Multiplicity="0..1" />
+    <End Role="Comprobante" Type="Self.Comprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="Comprobante">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comproban__IdUsu__35BCFE0A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Comprobante" Type="Self.Comprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Comprobante">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleCo__IdCom__398D8EEE">
+    <End Role="Comprobante" Type="Self.Comprobante" Multiplicity="0..1" />
+    <End Role="DetalleComprobante" Type="Self.DetalleComprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comprobante">
+        <PropertyRef Name="IdComprobante" />
+      </Principal>
+      <Dependent Role="DetalleComprobante">
+        <PropertyRef Name="IdComprobante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__IdCuenta__36B12243">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="0..1" />
+    <End Role="Cuenta1" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Cuenta1">
+        <PropertyRef Name="IdCuentaPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__IdEmpres__37A5467C">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__IdUsuari__38996AB5">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleCo__IdCue__3A81B327">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="0..1" />
+    <End Role="DetalleComprobante" Type="Self.DetalleComprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="DetalleComprobante">
+        <PropertyRef Name="IdCuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleCo__IdUsu__3B75D760">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="DetalleComprobante" Type="Self.DetalleComprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="DetalleComprobante">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__empresa__IdUsuar__267ABA7A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmpresaMo__IdEmp__3D5E1FD2">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="EmpresaMoneda" Type="Self.EmpresaMoneda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="EmpresaMoneda">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__gestion__IdEmpre__2A4B4B5E">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Gestion">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmpresaMo__IdMon__3E52440B">
+    <End Role="Moneda" Type="Self.Moneda" Multiplicity="0..1" />
+    <End Role="EmpresaMoneda" Type="Self.EmpresaMoneda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="EmpresaMoneda">
+        <PropertyRef Name="IdMonedaPrincipal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmpresaMo__IdMon__3F466844">
+    <End Role="Moneda" Type="Self.Moneda" Multiplicity="0..1" />
+    <End Role="EmpresaMoneda" Type="Self.EmpresaMoneda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="EmpresaMoneda">
+        <PropertyRef Name="IdMonedaAlternativa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmpresaMo__IdUsu__403A8C7D">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="EmpresaMoneda" Type="Self.EmpresaMoneda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="EmpresaMoneda">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Gestion__IdUsuar__4222D4EF">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Gestion">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Periodo__IdGesti__440B1D61">
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="0..1" />
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gestion">
+        <PropertyRef Name="IdGestion" />
+      </Principal>
+      <Dependent Role="Periodo">
+        <PropertyRef Name="IdGestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Moneda__IdUsuari__4316F928">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Moneda" Type="Self.Moneda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Moneda">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Periodo__IdUsuar__44FF419A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Periodo">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ERPBDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Articulo" EntityType="Self.Articulo" />
+    <EntitySet Name="ArticuloCategoria" EntityType="Self.ArticuloCategoria" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+    <EntitySet Name="Comprobante" EntityType="Self.Comprobante" />
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+    <EntitySet Name="DetalleComprobante" EntityType="Self.DetalleComprobante" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+    <EntitySet Name="EmpresaMoneda" EntityType="Self.EmpresaMoneda" />
+    <EntitySet Name="Gestion" EntityType="Self.Gestion" />
+    <EntitySet Name="Moneda" EntityType="Self.Moneda" />
+    <EntitySet Name="Periodo" EntityType="Self.Periodo" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Articulo__IdEmpr__619B8048" Association="Self.FK__Articulo__IdEmpr__619B8048">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Articulo" EntitySet="Articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Articulo__IdUsua__628FA481" Association="Self.FK__Articulo__IdUsua__628FA481">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Articulo" EntitySet="Articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Categoria__IdCat__5EBF139D" Association="Self.FK__Categoria__IdCat__5EBF139D">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Categoria1" EntitySet="Categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Categoria__IdEmp__5CD6CB2B" Association="Self.FK__Categoria__IdEmp__5CD6CB2B">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Categoria" EntitySet="Categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Categoria__IdUsu__5DCAEF64" Association="Self.FK__Categoria__IdUsu__5DCAEF64">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Categoria" EntitySet="Categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comproban__IdEmp__33D4B598" Association="Self.FK__Comproban__IdEmp__33D4B598">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Comprobante" EntitySet="Comprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comproban__IdMon__34C8D9D1" Association="Self.FK__Comproban__IdMon__34C8D9D1">
+      <End Role="Moneda" EntitySet="Moneda" />
+      <End Role="Comprobante" EntitySet="Comprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comproban__IdUsu__35BCFE0A" Association="Self.FK__Comproban__IdUsu__35BCFE0A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Comprobante" EntitySet="Comprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleCo__IdCom__398D8EEE" Association="Self.FK__DetalleCo__IdCom__398D8EEE">
+      <End Role="Comprobante" EntitySet="Comprobante" />
+      <End Role="DetalleComprobante" EntitySet="DetalleComprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__IdCuenta__36B12243" Association="Self.FK__Cuenta__IdCuenta__36B12243">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Cuenta1" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__IdEmpres__37A5467C" Association="Self.FK__Cuenta__IdEmpres__37A5467C">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__IdUsuari__38996AB5" Association="Self.FK__Cuenta__IdUsuari__38996AB5">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleCo__IdCue__3A81B327" Association="Self.FK__DetalleCo__IdCue__3A81B327">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="DetalleComprobante" EntitySet="DetalleComprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleCo__IdUsu__3B75D760" Association="Self.FK__DetalleCo__IdUsu__3B75D760">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DetalleComprobante" EntitySet="DetalleComprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__empresa__IdUsuar__267ABA7A" Association="Self.FK__empresa__IdUsuar__267ABA7A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmpresaMo__IdEmp__3D5E1FD2" Association="Self.FK__EmpresaMo__IdEmp__3D5E1FD2">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="EmpresaMoneda" EntitySet="EmpresaMoneda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__gestion__IdEmpre__2A4B4B5E" Association="Self.FK__gestion__IdEmpre__2A4B4B5E">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Gestion" EntitySet="Gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmpresaMo__IdMon__3E52440B" Association="Self.FK__EmpresaMo__IdMon__3E52440B">
+      <End Role="Moneda" EntitySet="Moneda" />
+      <End Role="EmpresaMoneda" EntitySet="EmpresaMoneda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmpresaMo__IdMon__3F466844" Association="Self.FK__EmpresaMo__IdMon__3F466844">
+      <End Role="Moneda" EntitySet="Moneda" />
+      <End Role="EmpresaMoneda" EntitySet="EmpresaMoneda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmpresaMo__IdUsu__403A8C7D" Association="Self.FK__EmpresaMo__IdUsu__403A8C7D">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="EmpresaMoneda" EntitySet="EmpresaMoneda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Gestion__IdUsuar__4222D4EF" Association="Self.FK__Gestion__IdUsuar__4222D4EF">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Gestion" EntitySet="Gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Periodo__IdGesti__440B1D61" Association="Self.FK__Periodo__IdGesti__440B1D61">
+      <End Role="Gestion" EntitySet="Gestion" />
+      <End Role="Periodo" EntitySet="Periodo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Moneda__IdUsuari__4316F928" Association="Self.FK__Moneda__IdUsuari__4316F928">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Moneda" EntitySet="Moneda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Periodo__IdUsuar__44FF419A" Association="Self.FK__Periodo__IdUsuar__44FF419A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Periodo" EntitySet="Periodo" />
+    </AssociationSet>
+    <EntitySet Name="Lote" EntityType="ERPBDModel.Lote" />
+    <EntitySet Name="Nota" EntityType="ERPBDModel.Nota" />
+    <AssociationSet Name="FK__Nota__IdComproba__693CA210" Association="ERPBDModel.FK__Nota__IdComproba__693CA210">
+      <End Role="Comprobante" EntitySet="Comprobante" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nota__IdEmpresa__6754599E" Association="ERPBDModel.FK__Nota__IdEmpresa__6754599E">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lote__IdNota__6C190EBB" Association="ERPBDModel.FK__Lote__IdNota__6C190EBB">
+      <End Role="Nota" EntitySet="Nota" />
+      <End Role="Lote" EntitySet="Lote" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nota__IdUsuario__68487DD7" Association="ERPBDModel.FK__Nota__IdUsuario__68487DD7">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <EntitySet Name="Detalle" EntityType="ERPBDModel.Detalle" />
+    <AssociationSet Name="FK__Empresa__IdCuent__01142BA1" Association="ERPBDModel.FK__Empresa__IdCuent__01142BA1">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__IdCuent__02084FDA" Association="ERPBDModel.FK__Empresa__IdCuent__02084FDA">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__IdCuent__02FC7413" Association="ERPBDModel.FK__Empresa__IdCuent__02FC7413">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__IdCuent__03F0984C" Association="ERPBDModel.FK__Empresa__IdCuent__03F0984C">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__IdCuent__04E4BC85" Association="ERPBDModel.FK__Empresa__IdCuent__04E4BC85">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__IdCuent__05D8E0BE" Association="ERPBDModel.FK__Empresa__IdCuent__05D8E0BE">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__IdCuent__06CD04F7" Association="ERPBDModel.FK__Empresa__IdCuent__06CD04F7">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Lote">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+      <PropertyRef Name="NroLote" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" />
+    <Property Name="NroLote" Type="Int32" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="PrecioCompra" Type="Double" />
+    <Property Name="Stock" Type="Int32" />
+    <Property Name="IdNota" Type="Int32" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Nota" Relationship="ERPBDModel.FK__Lote__IdNota__6C190EBB" FromRole="Lote" ToRole="Nota" />
+  </EntityType>
+  <EntityType Name="Nota">
+    <Key>
+      <PropertyRef Name="IdNota" />
+    </Key>
+    <Property Name="IdNota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroNota" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="Tipo" Type="Int32" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdComprobante" Type="Int32" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Comprobante" Relationship="ERPBDModel.FK__Nota__IdComproba__693CA210" FromRole="Nota" ToRole="Comprobante" />
+    <NavigationProperty Name="Empresa" Relationship="ERPBDModel.FK__Nota__IdEmpresa__6754599E" FromRole="Nota" ToRole="Empresa" />
+    <NavigationProperty Name="Lote" Relationship="ERPBDModel.FK__Lote__IdNota__6C190EBB" FromRole="Nota" ToRole="Lote" />
+    <NavigationProperty Name="Usuario" Relationship="ERPBDModel.FK__Nota__IdUsuario__68487DD7" FromRole="Nota" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__Nota__IdComproba__693CA210">
+    <End Type="ERPBDModel.Comprobante" Role="Comprobante" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Nota" Role="Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comprobante">
+        <PropertyRef Name="IdComprobante" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdComprobante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nota__IdEmpresa__6754599E">
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Nota" Role="Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lote__IdNota__6C190EBB">
+    <End Type="ERPBDModel.Nota" Role="Nota" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Lote" Role="Lote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nota">
+        <PropertyRef Name="IdNota" />
+      </Principal>
+      <Dependent Role="Lote">
+        <PropertyRef Name="IdNota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nota__IdUsuario__68487DD7">
+    <End Type="ERPBDModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Nota" Role="Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Detalle">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+      <PropertyRef Name="NroLote" />
+      <PropertyRef Name="IdNota" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" />
+    <Property Name="NroLote" Type="Int32" Nullable="false" />
+    <Property Name="IdNota" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="PrecioVenta" Type="Double" />
+  </EntityType>
+  <Association Name="FK__Empresa__IdCuent__01142BA1">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaCaja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__IdCuent__02084FDA">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaCreditoFiscal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__IdCuent__02FC7413">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaDebitoFiscal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__IdCuent__03F0984C">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaCompras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__IdCuent__04E4BC85">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaVentas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__IdCuent__05D8E0BE">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaIt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__IdCuent__06CD04F7">
+    <End Type="ERPBDModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+    <End Type="ERPBDModel.Empresa" Role="Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IdCuenta" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdCuentaItPorPagar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,27 @@
+﻿@using ReportViewerForMvc;
+@using Datos;
+@using Entidad;
+@model List<Empresa>
+@{
+    Layout = null;
+    Usuario oUsuario = ESesion.ObtenerSesion<Usuario>(Session["Usuario"]);
+    Empresa obtEmpresa = ViewBag.Empresa;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reporte De Cuentas</title>
+
+</head>
+<body>
+    <div style="text-align:right; padding:50px;">
+        @Html.ReportViewer(ViewBag.ReporteCuenta as Microsoft.Reporting.WebForms.ReportViewer, new { style = "width: 1090px; height:900px;border:none; " })
+    </div>
+
+</body>
+</html>
+
+

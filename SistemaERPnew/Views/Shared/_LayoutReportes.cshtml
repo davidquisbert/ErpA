@@ -1,0 +1,111 @@
+﻿@using Datos;
+@using Entidad;
+@{
+    Layout = null;
+    Usuario oUsuario = ESesion.ObtenerSesion<Usuario>(Session["Usuario"]);
+    Empresa Empresa = ESesion.ObtenerEmpresa<Empresa>(Session["Empresa"]);
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Principal/plugins/fontawesome-free/css/all.min.css")">
+    <link href="@Url.Content("~/Content/Principal/plugins/select2/css/select2.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Principal/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Principal/plugins//overlayScrollbars/css/OverlayScrollbars.min.css")">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Principal/dist/css/adminlte.min.css")">
+    <link href="~/Content/css/Index.css" rel="stylesheet" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @RenderSection("EtiquetaHead", required: false)
+</head>
+<body>
+
+@RenderBody()
+
+    <script src="@Url.Content("~/Content/Principal/plugins/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/dist/js/adminlte.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/select2/js/select2.full.min.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <script type="text/javascript">
+       
+        function MostrarMensaje(msj) {
+            $("#modalEliminar").modal('hide');
+            $("#mensaje").show();
+            $("#mensaje").html(msj);
+
+        }
+        function MostrarMensajeModal(msj) {
+
+            $("#mensajeModal").show();
+            $("#mensajeModal").html(msj);
+
+        }
+
+        function MostrarMensajeExito(msj) {
+            $("#mensajeModal").hide();
+            listarEmpresa();
+            var msjbody = "Se Modifico los Datos Exitosamente";
+            if ($("#itIdEmpresa").val().length === 0) {
+                msjbody = "Se Registro los Datos Exitosamente";
+            }
+
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: msj,
+                autohide: true,
+                delay: 10000,
+                body: msjbody
+            });
+            $("#itIdEmpresa").val("");
+            $("#itNombre").val("");
+            $("#itNit").val("");
+            $("#itSigla").val("");
+            $("#itTelefono").val("");
+            $("#itCorreo").val("");
+            $("#itDireccion").val("");
+            $("#modalEmpresa").modal('hide');
+            console.log(msj);
+        }
+
+
+        function MostrarMensajeEliminacion(msj) {
+            $("#mensaje").hide();
+            listarEmpresa();
+            var msjbody = "Se elimino la empresa";
+
+
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: msj,
+                autohide: true,
+                delay: 10000,
+                body: msjbody
+            });
+
+            $("#modalEliminar").modal('hide');
+            console.log(msj);
+        }</script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

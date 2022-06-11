@@ -1,0 +1,21 @@
+﻿@using ReportViewerForMvc;
+@using Datos;
+@using Entidad;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ReporteComprobante</title>
+</head>
+<body>
+    <div style="text-align:right; padding:50px;">
+        @Html.ReportViewer(ViewBag.ReporteComprobante as Microsoft.Reporting.WebForms.ReportViewer, new { style = "width: 1090px; height:900px;border:none; " })
+    </div>
+</body>
+</html>

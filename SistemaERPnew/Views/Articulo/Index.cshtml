@@ -1,0 +1,603 @@
+﻿@using Datos;
+@using Entidad;
+@model List<Articulo>
+
+@{
+    ViewBag.Title = "Articulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ECategoria> categorias = ViewBag.Categoria;
+}
+@section EtiquetaHead
+    {
+
+    <link href="@Url.Content("~/Content/Principal/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Principal/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.css")" rel="stylesheet" />
+}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Articulos
+                        </h3>
+                        <div class="row justify-content-end">
+                            <div class="form-group">
+                                <a href="@Url.Action("ReportePeriodo", "Periodo")" class="btn btn-info disabled" style="margin-right:10px;" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                        <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success" onclick="AbrirModalRegistro()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <br />
+                        <div class="form-group" id="contenedorLista">
+                            @Html.Partial("ListaArticulo", Model)
+                        </div>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                    </div>
+                    <!-- /.card-footer-->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="modalEmpresa">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tituloEmpresa"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form role="form">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 form-group alert alert-danger" id="mensajeModal" style="display:none">
+                        </div>
+                        <input type="text" class="form-control" id="itIdArticulo" hidden>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>*Nombre</label>
+                                <input type="text" class="form-control" id="itNombre" placeholder="" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Descripcion</label>
+                                <textarea type="text" class="form-control" id="itDescripcion" placeholder="" maxlength="100"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>*Precio de Venta</label>
+                                <input type="number" class="form-control" id="itPrecio" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Categoria</label>
+                                <select class="form-control" id="select_Categoria" multiple>
+
+                                    @{
+                                        foreach (var i in categorias)
+                                        {
+                                            <option value="@i.idCategoria">@i.Nombre</option>
+                                        }
+
+                                    }
+
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-success" onclick="Registro()">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+
+
+
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="modalEmpresa2">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tituloLotes"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form role="form">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table table-bordered table-hover" id="tabla_lotes">
+                            <thead>
+                                <tr>
+                                    <th style="width:25%;">Nro Lote</th>
+                                    <th style="width:15%;">Ingreso</th>
+                                    <th style="width:15%;">Vencimiento</th>
+                                    <th style="width:15%;">Cantidad</th>
+                                    <th style="width:15%;">Stock</th>
+                                    <th style="width:15%;">Estado</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="idtbody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </form>
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+
+
+
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="modalEliminar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirmacion</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" id="inputIdArticulo" hidden>
+                <p id="texto"></p>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="Eliminar()">Aceptar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+@section Scripts{
+
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables-responsive/js/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables-responsive/js/responsive.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+    @* Buttons pdf <script src="//cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>*@
+
+    @*<script src="@Url.Content("~/Scripts/metronic/global/scripts/datatable.js")"></script>
+
+        <script src="@Url.Content("~/Content/adminLte/plugins1/datatables/datatables.min.js")"></script>
+        <script src="@Url.Content("~/Content/adminLte/plugins1/datatables/plugins/bootstrap/datatables.bootstrap.js")"></script>
+    *@
+<script type="text/javascript">
+
+        var TableDatatablesRowreorder = function () {
+
+            var initTable1 = function () {
+                var table = $('#tabla_articulo');
+
+                var oTable = table.dataTable({
+
+                    // Internationalisation. For more info refer to http://datatables.net/manual/i18n
+                    "language": {
+                        "aria": {
+                            "sortAscending": ": activate to sort column ascending",
+                            "sortDescending": ": activate to sort column descending"
+                        },
+                        "emptyTable": "No hay datos para mostrar",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Articulo",
+                        "infoEmpty": "No hay datos para mostrar",
+                        "infoFiltered": "(Filtrado de _MAX_ total Articulo)",
+                        "lengthMenu": "_MENU_ Articulo",
+                        "search": "Buscar:",
+                        "zeroRecords": "No se encontraron coincidencias"
+                    },
+
+                    // Or you can use remote translation file
+                    //"language": {
+                    //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
+                    //},
+
+                    // setup buttons extentension: http://datatables.net/extensions/buttons/
+                    /* buttons: [
+                         //{ extend: 'print', className: 'btn dark btn-outline', exportOptions: { columns: [0, 1, 2, 3] } },
+                         { extend: 'copy', className: 'btn purple btn-outline ', exportOptions: { columns: [0, 1, 2, 3] } },
+                         { extend: 'pdf', className: 'btn green btn-outline', exportOptions: { columns: [0, 1, 2, 3] } },
+                         { extend: 'csv', className: 'btn purple btn-outline ', exportOptions: { columns: [0, 1, 2, 3] } },
+                         { extend: 'excel', className: 'btn purple btn-outline ', exportOptions: { columns: [0, 1, 2, 3] } }
+                     ],*/
+                    columnDefs: [
+                        { orderable: false, targets: [4] }
+                    ],
+                    // setup rowreorder extension: http://datatables.net/extensions/rowreorder/
+
+                    "order": [
+                        [0, 'asc']
+                    ],
+
+                    "lengthMenu": [
+                        [5, 10, 15, 20, -1],
+                        [5, 10, 15, 20, "Todos"] // change per page values here
+                    ],
+                    // set the initial value
+                    "pageLength": 10,
+
+                    "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+
+                    // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
+                    // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+                    // So when dropdowns used the scrollable div should be removed.
+                    //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+                });
+            }
+
+            return {
+
+                //main function to initiate the module
+                init: function () {
+
+                    if (!$().dataTable) {
+                        return;
+                    }
+
+                    initTable1();
+                }
+
+            };
+
+    }();
+
+        $(document).ready(function () {
+            TableDatatablesRowreorder.init();
+            $("#select_Categoria").select2();
+
+        });
+
+        function redireccionar(url) {
+            window.location = url;
+        }
+        class categoria {
+        IdCategoria = null;
+
+            constructor(value) {
+            this.IdCategoria = value;
+            }
+        }
+        class lote {
+        NroLote = null;
+
+            constructor(value) {
+                this.NroLote = value;
+            }
+        }   
+        function Registro() {
+
+            console.log($("#itIdArticulo").val());
+            var lista = [];
+
+
+
+            $("#select_Categoria option:selected").each(function () {
+                if ($(this).val() != "") {
+
+                    lista.push(new categoria($(this).val()));
+                }
+            });
+
+
+
+            console.log(lista);
+            if ($("#itPrecio").val().length === 0) {
+                return MostrarMensaje("Debe registrar un Precio de venta");
+            }
+
+            if ($("#itIdArticulo").val().length === 0) {
+
+                $.ajax({
+                    url: "@Url.Action("Registro", "Articulo")",
+                    cache: false,
+                            type: "POST",
+                            dataType: "script",
+                            data: {
+
+                               nombre: $("#itNombre").val(),
+                                descripcion: $("#itDescripcion").val(),
+                                precioventa: parseFloat($("#itPrecio").val()),
+                                categorias: lista
+
+
+
+                    }, success: function () {
+
+                    }
+                });
+
+
+
+            } else {
+
+
+                 $.ajax({
+                    url: "@Url.Action("Editar", "Articulo")",
+                    cache: false,
+                            type: "POST",
+                            dataType: "script",
+                            data: {
+                                id: $("#itIdArticulo").val(),
+                                nombre: $("#itNombre").val(),
+                                descripcion: $("#itDescripcion").val(),
+                                precioventa: parseFloat($("#itPrecio").val()),
+                                categorias: lista
+
+
+                    }, success: function () {
+
+
+                    }
+                });
+
+            }
+
+        }
+
+        function ObtenerArticulo(id) {
+
+
+            $.ajax({
+                url: "@Url.Action("ObtenerArticulo", "Articulo")",
+                cache: false,
+                type: "POST",
+                dataType: "json",
+                data: {
+                    idarticulo: id
+
+                }, success: function (result) {
+                    $("#itIdArticulo").val(result.Data.IdArticulo);
+                    $("#itNombre").val(result.Data.NombreArticulo);
+                    $("#itDescripcion").val(result.Data.Descripcion);
+                    $("#itPrecio").val(result.Data.PrecioVenta);
+
+                    let lista = []
+
+                    result.Data.Categoria.forEach((item) => { //Recorro primer arreglo
+
+                        lista.push(item.IdCategoria);
+
+                    });
+
+
+                        $("#select_Categoria").val(lista).trigger('change');
+                        $("#tituloEmpresa").html("Modificar Articulo");
+                        $("#modalEmpresa").modal('show');
+
+                }
+
+            })
+
+        }
+        function ObtenerLote(id,nombre) {
+        var Table = document.getElementById("idtbody");
+        Table.innerHTML = "";
+        
+            $.ajax({
+                url: "@Url.Action("ObtenerLote", "Articulo")",
+                cache: false,
+                type: "POST",
+                dataType: "json",
+                data: {
+                    idarticulo: id
+
+                }, success: function (result) {
+                    result.Data.Lote.forEach(function (lotes) {
+                        if (lotes.Estado == 1) {
+                            var estadoxd = "Activo";
+                        } else if (lotes.Estado == 2) {
+                            var estadoxd = "Anulado";
+                        } else if (lotes.Estado == 3) {
+                            var estadoxd = "Agotado";
+                        }
+                        if (lotes.FechaVencimiento.length <= 0) {
+                            var fechav = "Sin Fecha";
+                        } else if (lotes.FechaVencimiento.length > 0) {
+                            var fechav = lotes.FechaVencimiento;
+                        }
+                        var fila = "<tr><td>" + lotes.NroLote + "</td><td>" + lotes.FechaIngreso + "</td><td>" + fechav + "</td><td>" + lotes.Cantidad + "</td></tr>" + "</td><td>" + lotes.Stock + "</td></tr>" + "</td><td>" + estadoxd + "</td></tr>";
+                        var btn = document.createElement("tr");
+                        btn.innerHTML = fila;
+                        document.getElementById("idtbody").appendChild(btn);
+                    })
+                    $("#tituloLotes").html("Lotes del Articulo: " + nombre);
+                    $("#modalEmpresa2").modal('show');
+
+                }
+
+            })
+
+        }
+        var Id = null;
+
+        function AbrirModalEliminar(id,nombre) {
+
+            Id = id;
+           // $("#mensaje").hide();
+                if (Id == null) {
+                       return MostrarMensaje("Debe seleccionar un Articulo");
+                }
+
+            var mesjModalEliminar = "¿Esta seguro que deseas eliminar el Articulo " + nombre + " ?";
+             $("#texto").html(mesjModalEliminar);
+            $("#modalEliminar").modal('show');
+
+            console.log(id)
+
+
+        }
+
+        function Eliminar() {
+
+                if ( Id == null) {
+                       return MostrarMensaje("Debe seleccionar un Articulo");
+                }
+
+                $.ajax({
+                        url: "@Url.Action("Eliminar", "Articulo")",
+                        cache: false,
+                                type: "POST",
+                                dataType: "script",
+                    data: {
+                        id: Id
+                    }
+
+                });
+         }
+
+        function AbrirModalRegistro() {
+           // $("#mensaje").hide();
+            $("#modalEmpresa").modal('show');
+            $("#tituloEmpresa").html("Registrar Articulo");
+            $("#itIdArticulo").val("");
+            $("#itNombre").val("");
+            $("#itDescripcion").val("");
+            $("#itPrecio").val("");
+            $("#select_Categoria").val("").trigger('change');
+
+        }
+
+        function AbrirModalEditar(id,nombre,descripcion,precioventa) {
+           // $("#mensaje").hide();
+            $("#modalEmpresa").modal('show');
+            $("#tituloEmpresa").html("Modificar Articulo");
+            $("#itIdArticulo").val(id);
+            $("#itNombre").val(nombre);
+            $("#itDescripcion").val(descripcion);
+            $("#itPrecio").val(precioventa);
+        }
+
+        function MostrarMensaje(msj) {
+                $("#modalEliminar").modal('hide');
+
+                 $(document).Toasts('create', {
+                        class: ' bg-danger',
+                        title: "Alerta",
+                        autohide: true,
+                        delay: 2000,
+                        body: msj
+                    });
+        }
+
+        function MostrarMensajeExito(msj) {
+
+                listar();
+                var msjbody = "Se Modifico El Articulo Exitosamente";
+                if ($("#itIdArticulo").val().length === 0) {
+                    msjbody = "Se Registro el Articulo Exitosamente";
+                }
+
+                $(document).Toasts('create', {
+                    class: 'bg-success',
+                    title: msj,
+                    autohide: true,
+                    delay: 2000,
+                    body: msjbody
+                });
+                $("#itIdArticulo").val("");
+                $("#itNombre").val("");
+                $("#itDescripcion").val("");
+                $("#itPrecio").val("");
+
+                $("#modalEmpresa").modal('hide');
+               // console.log(msj);
+        }
+
+        function MostrarMensajeEliminacion(msj) {
+
+                listar();
+                var msjbody = "Se elimino el Articulo";
+
+
+                $(document).Toasts('create', {
+                    class: 'bg-danger',
+                    title: msj,
+                    autohide: true,
+                    delay: 2000,
+                    body: msjbody
+                });
+
+                $("#modalEliminar").modal('hide');
+               // console.log(msj);
+        }
+
+        function listar()
+        {
+
+
+            $.ajax({
+                url: "@Url.Action("Listar", "Articulo")",
+                cache: false,
+                data: {
+
+                },
+                type: "GET", success: function (html) {
+                    $("#contenedorLista").html(html);
+                     TableDatatablesRowreorder.init();
+                }
+            })
+
+        }
+
+
+</script>
+}

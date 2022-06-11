@@ -1,0 +1,305 @@
+﻿@using Datos;
+@using Entidad;
+@{
+    Layout = null;
+    Usuario oUsuario = ESesion.ObtenerSesion<Usuario>(Session["Usuario"]);
+    Empresa Empresa = ESesion.ObtenerEmpresa<Empresa>(Session["Empresa"]);
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Principal/plugins/fontawesome-free/css/all.min.css")">
+    <link href="@Url.Content("~/Content/Principal/plugins/select2/css/select2.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Principal/plugins/select2-bootstrap4-theme/select2-bootstrap4.css")" rel="stylesheet"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Principal/plugins//overlayScrollbars/css/OverlayScrollbars.min.css")">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Principal/dist/css/adminlte.css")">
+    <link href="~/Content/css/Index.css" rel="stylesheet" />
+    
+    
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @RenderSection("EtiquetaHead", required: false)
+</head>
+<body>
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav id="sidebar">
+            <div class="sidebar-header" style="text-align:center;padding-top:10px;padding-bottom:0px;">
+
+                <div class="" style="padding-top:0px;padding-bottom:0px;color:#051538;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                </div>
+                <div class="" style="padding-top:0px;padding-bottom:0px;color:#051538;">
+                    @if (!string.IsNullOrEmpty(oUsuario.Usuario1))
+                    {
+                        <label style="font-size:30px">@oUsuario.Usuario1</label>
+                    }
+                </div>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="@Url.Action("Index", "Inicio")">Inicio</a>
+                </li>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Contabilidad</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="@Url.Action("Index", "Cuenta")" class="nav-link">
+                                Plan de Cuentas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Comprobante")" class="nav-link">
+                                Comprobante
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <ul class="list-unstyled components">
+                                <li>
+                                    <a href="#pagereporteSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reportes</a>
+                                    <ul class="collapse list-unstyled" id="pagereporteSubmenu">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("ReporteBalanceInicial", "Comprobante")" class="nav-link" target="_blank" ;>
+                                                Balance Inicial
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("ReporteBalanceGeneral", "Comprobante")" class="nav-link" target="_blank" ;>
+                                                Balance General
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("ReporteLibroDiario", "Comprobante")" class="nav-link" target="_blank" ;>
+                                                Libro Diario
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("ReporteLibroMayor", "Comprobante")" class="nav-link" target="_blank" ;>
+                                                Libro Mayor
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("ReporteSumasySaldos", "Comprobante")" class="nav-link" target="_blank" ;>
+                                                Comprobacion de Sumas y Saldos
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("ReporteEstadoResultados", "Comprobante")" class="nav-link" target="_blank" ;>
+                                                Estado De Resultados
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Configuraciones</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="@Url.Action("Index", "Gestion")" class="nav-link">
+                                Gestion
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Moneda")" class="nav-link">
+                                Monedas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Integracion")" class="nav-link">
+                                Integracion
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageInvSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inventario</a>
+                    <ul class="collapse list-unstyled" id="pageInvSubmenu">
+                        <li>
+                            <a href="@Url.Action("Index", "Categoria")" class="nav-link">
+                                Categoria
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Articulo")" class="nav-link">
+                                Articulo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Nota")" class="nav-link">
+                                Nota de compra
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index2", "Nota")" class="nav-link">
+                                Nota de venta
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:5px;">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li>
+                                <a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                                        <path d="M8 .95 14.61 4h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.379l.5 2A.5.5 0 0 1 15.5 17H.5a.5.5 0 0 1-.485-.621l.5-2A.5.5 0 0 1 1 14V7H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 4h.89L8 .95zM3.776 4h8.447L8 2.05 3.776 4zM2 7v7h1V7H2zm2 0v7h2.5V7H4zm3.5 0v7h1V7h-1zm2 0v7H12V7H9.5zM13 7v7h1V7h-1zm2-1V5H1v1h14zm-.39 9H1.39l-.25 1h13.72l-.25-1z" />
+                                    </svg>
+                                    @if (!string.IsNullOrEmpty(Empresa.Nombre))
+                                    {
+                                        <label style="font-size:20px">@Empresa.Nombre</label>
+                                    }
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a href="@Url.Action("Index", "Empresa")" class="btn btn-info" style="font-size:13px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
+                                        <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
+                                    </svg>
+                                    Cambiar Empresa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("CerrarSesion", "Login")" class="btn btn-danger" style="font-size:13px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                    </svg>
+                                    Salir
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+
+
+        </div>
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+
+
+
+    <script src="@Url.Content("~/Content/Principal/plugins/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/dist/js/adminlte.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/select2/js/select2.full.min.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        /*  $(document).ready(function () {
+
+                                   $('.select2').select2();
+                               $("#select_empresa").select2();
+                      });*/
+
+        function MostrarMensaje(msj) {
+            $("#modalEliminar").modal('hide');
+            $("#mensaje").show();
+            $("#mensaje").html(msj);
+
+        }
+
+        function MostrarMensajeModal(msj) {
+
+            $("#mensajeModal").show();
+            $("#mensajeModal").html(msj);
+
+        }
+
+        function MostrarMensajeExito(msj) {
+            $("#mensajeModal").hide();
+            listarEmpresa();
+            var msjbody = "Se Modifico los Datos Exitosamente";
+            if ($("#itIdEmpresa").val().length === 0) {
+                msjbody = "Se Registro los Datos Exitosamente";
+            }
+
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: msj,
+                autohide: true,
+                delay: 10000,
+                body: msjbody
+            });
+            $("#itIdEmpresa").val("");
+            $("#itNombre").val("");
+            $("#itNit").val("");
+            $("#itSigla").val("");
+            $("#itTelefono").val("");
+            $("#itCorreo").val("");
+            $("#itDireccion").val("");
+            $("#modalEmpresa").modal('hide');
+            console.log(msj);
+        }
+
+
+        function MostrarMensajeEliminacion(msj) {
+            $("#mensaje").hide();
+            listarEmpresa();
+            var msjbody = "Se elimino la empresa";
+
+
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: msj,
+                autohide: true,
+                delay: 10000,
+                body: msjbody
+            });
+
+            $("#modalEliminar").modal('hide');
+            console.log(msj);
+        }</script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

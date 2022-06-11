@@ -1,0 +1,128 @@
+﻿@using Datos;
+@using Entidad.Estados;
+@using Entidad;
+@model List<EDetalleComprobante>
+@{
+                EDetalleTotal detalleTotal = Session["DetalleTotal"] as EDetalleTotal;
+                DetalleEstado detalleEstado = Session["EstadoComprobante"] as DetalleEstado;
+}
+<div style="height:205px; overflow: scroll;">
+    <table class="table table-bordered table-hover table-head-fixed" id="tabla_detalleComprobante">
+        <thead>
+            <tr>
+                <th style="width:20%">Cuenta</th>
+                <th style="width:30%">Glosa</th>
+                <th style="width:17.5%">Debe</th>
+                <th style="width:17.5%">Haber</th>
+                <th style="width:15%"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.Cuenta</td>
+                        <td>@i.Glosa</td>
+                        <td style="text-align:right;">@(i.Debe)</td>
+                        <td style="text-align:right;">@i.Haber</td>
+                        <td style="text-align:center">
+                            @{
+                                if (detalleEstado.Estado == (int)EstadoComprobante.Abierto)
+                                {
+                                    <button class="btn btn-primary" onclick="AbrirModalEditar('@i.IdDetalle', '@i.IdCuenta', '@i.Cuenta', '@i.Debe', '@i.Haber', '@i.Glosa')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </button>
+                                }
+                            }
+                            @{
+                                if (detalleEstado.Estado == (int)EstadoComprobante.Abierto)
+                                {
+                                    <button class="btn btn-danger" onclick="AbrirModalEliminar('@i.IdDetalle', '@i.IdCuenta', '@i.Cuenta')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                        </svg>
+                                    </button>
+                                }
+                            }
+                        </td>
+
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+    </table>
+    
+</div>
+
+<br />
+<div class="row justify-content-end" style="padding-right:0px;padding-bottom:0px;margin-bottom:0px;padding-top:0px;margin-top:0px;">
+
+    <div class="col-md-2">
+        <div class="form-group">
+            <label></label>
+        </div>
+    </div>
+    <div class="col-md-4" style="text-align:center;">
+        <div class="form-group">
+            <label>TOTALES:</label>
+        </div>
+    </div>
+    @{
+
+        if (detalleTotal != null)
+
+        {
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="itTotalDebe">Total Debe</label>
+                    <input type="text" class="form-control" id="itTotalDebe" value="@detalleTotal.TotalDebe" style="text-align:right;" disabled>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="itTotalHaber">Total Haber</label>
+                    <input type="text" class="form-control" id="itTotalHaber" value="@detalleTotal.TotalHaber" style="text-align:right;" disabled>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="itTotalDebe">Total Debe</label>
+                    <input type="text" class="form-control" id="itTotalDebe" style="text-align:right;" disabled>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="itTotalHaber">Total Haber</label>
+                    <input type="text" class="form-control" id="itTotalHaber" style="text-align:right;" disabled>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+</div>

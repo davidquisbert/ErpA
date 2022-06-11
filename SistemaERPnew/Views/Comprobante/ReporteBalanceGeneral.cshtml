@@ -1,0 +1,159 @@
+﻿@using ReportViewerForMvc;
+@using Datos;
+@using Entidad;
+@{
+    ViewBag.Title = "Reporte Balance General";
+    Layout = "~/Views/Shared/_LayoutReportes.cshtml";
+
+    List<Gestion> gestiones = ViewBag.Gestion;
+
+    List<EmpresaMoneda> empresaMonedas = ViewBag.EmpresaMonedas;
+
+    EmpresaMoneda emoneda = empresaMonedas.First();
+
+}@section EtiquetaHead
+    {
+
+    <link href="@Url.Content("~/Content/Principal/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Principal/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.css")" rel="stylesheet" />
+
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card" style="height:170px;">
+                    <div class="card-header" style="text-align:center;font-size:30px;font-weight:bold;background-color:darkgray;">
+
+                        Reporte De Balance General
+
+                    </div>
+                    <div class="row" style="padding-left: 100px; padding-right: 20px; padding-top: 5px; ">
+                        <div class="col-md-4" style="text-align:center;">
+                            <div class="form-group">
+                                <label>Gestion</label>
+                                <select class="form-control select2" style="width: 100%;" id="select_Gestion">
+                                    <option value="-1">Seleccione una gestion</option>
+                                    @{
+                                        foreach (var i in gestiones)
+                                        {
+
+                                            <option value="@i.IdGestion">@i.Nombre</option>
+
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="text-align:center;">
+                            <div class="form-group">
+                                <label>Moneda</label>
+                                <select class="form-control select2" style="width: 100%;" id="select_Moneda">
+                                    @{
+                                        foreach (var i in empresaMonedas)
+                                        {
+
+                                            <option value="@i.IdMonedaPrincipal">@i.Moneda.Nombre</option>
+                                            if (i.IdMonedaAlternativa != null)
+                                            {
+                                                <option value="@i.IdMonedaAlternativa">@i.Moneda1.Nombre</option>
+                                            }
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" style="text-align:center;">
+                            <label>Generar Reporte</label>
+                            <div class="form-group">
+                                <button class="btn btn-info" onclick="ReporteBalanceGeneral()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                        <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                    </svg>
+                                </button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" id="contenedor" style="text-align:right;padding-top:10px;">
+                        @Html.Partial("BalanceGeneralParcial")
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+@section Scripts{
+
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables-responsive/js/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/Content/Principal/plugins/datatables-responsive/js/responsive.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#select_Gestion").select2();
+            $("#select_Moneda").select2();
+        });
+
+        function redireccionar(url) {
+            window.location = url;
+        }
+        function ReporteBalanceGeneral()
+        {
+            let IdGestion = $("#select_Gestion").val();
+            let IdMoneda = $("#select_Moneda").val();
+            if (IdGestion == -1) {
+                return MostrarMensaje("Seleccione una gestion")
+            }
+
+            $.ajax({
+                url: "@Url.Action("ReporteDeBalanceGeneral", "Comprobante")",
+                cache: false,
+                data: {
+                    idgestion: IdGestion,
+                    idmoneda: IdMoneda
+                },
+                type: "GET", success: function (html) {
+                    $("#contenedor").html(html);
+
+                }
+            })
+
+        }
+
+
+        function MostrarMensaje(msj) {
+            $("#modalEliminar").modal('hide');
+
+                 $(document).Toasts('create', {
+                        class: ' bg-danger',
+                        title: "Alerta",
+                        autohide: true,
+                        delay: 10000,
+                        body: msj
+                    });
+        }
+
+    </script>
+}

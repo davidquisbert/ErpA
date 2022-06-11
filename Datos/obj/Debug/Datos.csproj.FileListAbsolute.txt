@@ -1,0 +1,48 @@
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\Datos.dll.config
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\Datos.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\Datos.pdb
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\EntityFramework.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\EntityFramework.xml
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\obj\Debug\Datos.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\obj\Debug\Datos.pdb
+C:\Users\alfre\source\repos\SistemaERPnew\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\Datos.dll.config
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\Datos.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\Datos.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\EntityFramework.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\EntityFramework.xml
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\obj\Debug\Datos.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Datos\obj\Debug\Datos.pdb
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\Datos.dll.config
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\Datos.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\Datos.pdb
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\EntityFramework.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\EntityFramework.xml
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.xml
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CopyComplete
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\obj\Debug\Datos.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Datos\obj\Debug\Datos.pdb
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\Datos.dll.config
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\Datos.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\Datos.pdb
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\EntityFramework.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\EntityFramework.xml
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\bin\Debug\EntityFramework.SqlServer.xml
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\obj\Debug\Datos.csproj.CopyComplete
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\obj\Debug\Datos.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Datos\obj\Debug\Datos.pdb

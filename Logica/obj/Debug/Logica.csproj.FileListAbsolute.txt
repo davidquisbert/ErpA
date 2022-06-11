@@ -1,0 +1,85 @@
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Logica.dll.config
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Logica.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Logica.pdb
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Datos.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Entidad.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\EntityFramework.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Datos.pdb
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Datos.dll.config
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\Entidad.pdb
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\EntityFramework.xml
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\obj\Debug\Logica.dll
+C:\Users\alfre\source\repos\SistemaERPnew\Logica\obj\Debug\Logica.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Logica.dll.config
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Logica.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Logica.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Datos.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Entidad.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\EntityFramework.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Datos.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Datos.dll.config
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\Entidad.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\EntityFramework.xml
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\obj\Debug\Logica.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad\SistemaERPnew\Logica\obj\Debug\Logica.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Logica.dll.config
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Logica.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Logica.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Datos.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Entidad.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Datos.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Datos.dll.config
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\Entidad.pdb
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.xml
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\obj\Debug\Logica.dll
+C:\Users\alfre\OneDrive\Escritorio\universidad\Proyecto universidad14-04\SistemaERPnew\Logica\obj\Debug\Logica.pdb
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Logica.dll.config
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Logica.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Logica.pdb
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Datos.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Entidad.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Datos.pdb
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Datos.dll.config
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\Entidad.pdb
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.xml
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.xml
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CopyComplete
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\obj\Debug\Logica.dll
+D:\universidad\Proyecto universidad16-04\SistemaERPnew\Logica\obj\Debug\Logica.pdb
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Logica.dll.config
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Logica.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Logica.pdb
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Datos.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Entidad.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\EntityFramework.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Datos.pdb
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Datos.dll.config
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\Entidad.pdb
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\EntityFramework.xml
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\bin\Debug\EntityFramework.SqlServer.xml
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\obj\Debug\Logica.csproj.CopyComplete
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\obj\Debug\Logica.dll
+D:\UDI\7mo. Semestre\Diseño de Soluciones ERP\SistemaERPnew\Logica\obj\Debug\Logica.pdb

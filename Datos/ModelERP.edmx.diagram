@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a232bacb93e24d32a7f2b44290b0f86d" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="ERPBDModel.Articulo" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Categoria" Width="1.5" PointX="8.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Comprobante" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Cuenta" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.DetalleComprobante" Width="1.5" PointX="10.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Empresa" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.EmpresaMoneda" Width="1.5" PointX="8.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Gestion" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Moneda" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Periodo" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPBDModel.Usuario" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="ERPBDModel.FK__Articulo__IdEmpr__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Articulo__IdUsua__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Categoria__IdCat__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Categoria__IdEmp__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Categoria__IdUsu__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Comproban__IdEmp__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Comproban__IdMon__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Comproban__IdUsu__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__DetalleCo__IdCom__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Cuenta__IdCuenta__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Cuenta__IdEmpres__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Cuenta__IdUsuari__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__DetalleCo__IdCue__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__DetalleCo__IdUsu__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__empresa__IdUsuar__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__EmpresaMo__IdEmp__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__gestion__IdEmpre__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__EmpresaMo__IdMon__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__EmpresaMo__IdMon__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__EmpresaMo__IdUsu__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Gestion__IdUsuar__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Periodo__IdGesti__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Moneda__IdUsuari__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPBDModel.FK__Periodo__IdUsuar__44FF419A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ERPBDModel.ArticuloCategoria" Width="1.5" PointX="4.875" PointY="13.5" />
+        <EntityTypeShape EntityType="ERPBDModel.Lote" Width="1.5" PointX="12.75" PointY="24.125" />
+        <EntityTypeShape EntityType="ERPBDModel.Nota" Width="1.5" PointX="10.5" PointY="23.75" />
+        <AssociationConnector Association="ERPBDModel.FK__Nota__IdComproba__693CA210" />
+        <AssociationConnector Association="ERPBDModel.FK__Nota__IdEmpresa__6754599E" />
+        <AssociationConnector Association="ERPBDModel.FK__Lote__IdNota__6C190EBB" />
+        <AssociationConnector Association="ERPBDModel.FK__Nota__IdUsuario__68487DD7" />
+        <EntityTypeShape EntityType="ERPBDModel.Detalle" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__01142BA1" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__02084FDA" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__02FC7413" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__03F0984C" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__04E4BC85" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__05D8E0BE" />
+        <AssociationConnector Association="ERPBDModel.FK__Empresa__IdCuent__06CD04F7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

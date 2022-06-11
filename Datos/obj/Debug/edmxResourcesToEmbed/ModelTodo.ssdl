@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERPBDModelTodo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Nit" Type="int" />
+    <Property Name="Sigla" Type="varchar" MaxLength="20" />
+    <Property Name="Telefono" Type="int" />
+    <Property Name="Correo" Type="varchar" MaxLength="30" />
+    <Property Name="Direccion" Type="text" />
+    <Property Name="Niveles" Type="int" />
+    <Property Name="IdUsuario" Type="int" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="Gestion">
+    <Key>
+      <PropertyRef Name="IdGestion" />
+    </Key>
+    <Property Name="IdGestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Fechainicio" Type="datetime" />
+    <Property Name="Fechafin" Type="datetime" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="IdUsuario" Type="int" />
+    <Property Name="IdEmpresa" Type="int" />
+  </EntityType>
+  <EntityType Name="Periodo">
+    <Key>
+      <PropertyRef Name="IdPeriodo" />
+    </Key>
+    <Property Name="IdPeriodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Fechainicio" Type="date" />
+    <Property Name="Fechafin" Type="date" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="IdUsuario" Type="int" />
+    <Property Name="IdGestion" Type="int" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Usuario" Type="varchar" MaxLength="20" />
+    <Property Name="Pass" Type="varchar" MaxLength="20" />
+    <Property Name="Tipo" Type="varchar" MaxLength="10" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <Association Name="FK__empresa__IdUsuar__267ABA7A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__gestion__IdEmpre__2A4B4B5E">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Gestion">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__gestion__IdUsuar__29572725">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Gestion">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__periodo__IdGesti__2E1BDC42">
+    <End Role="Gestion" Type="Self.Gestion" Multiplicity="0..1" />
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gestion">
+        <PropertyRef Name="IdGestion" />
+      </Principal>
+      <Dependent Role="Periodo">
+        <PropertyRef Name="IdGestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__periodo__IdUsuar__2D27B809">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Periodo">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ERPBDModelTodoStoreContainer">
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gestion" EntityType="Self.Gestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periodo" EntityType="Self.Periodo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__empresa__IdUsuar__267ABA7A" Association="Self.FK__empresa__IdUsuar__267ABA7A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__gestion__IdEmpre__2A4B4B5E" Association="Self.FK__gestion__IdEmpre__2A4B4B5E">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Gestion" EntitySet="Gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__gestion__IdUsuar__29572725" Association="Self.FK__gestion__IdUsuar__29572725">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Gestion" EntitySet="Gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__periodo__IdGesti__2E1BDC42" Association="Self.FK__periodo__IdGesti__2E1BDC42">
+      <End Role="Gestion" EntitySet="Gestion" />
+      <End Role="Periodo" EntitySet="Periodo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__periodo__IdUsuar__2D27B809" Association="Self.FK__periodo__IdUsuar__2D27B809">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Periodo" EntitySet="Periodo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
